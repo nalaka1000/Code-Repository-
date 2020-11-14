@@ -1,0 +1,46 @@
+package com.don;
+
+import java.security.Principal;
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+
+    Scanner userInput = new Scanner(System.in);
+    System.out.println("Enter string");
+
+    String toStringUserInput = userInput.nextLine();
+
+        reverseString(toStringUserInput);
+
+
+
+    }
+
+      static void reverseString(String x){
+
+
+        char [] newArray = new char[x.length()];
+
+        for (int c = 0; c<x.length();c++) {
+            newArray[c] = x.charAt(c);
+        }
+
+          for (int c=newArray.length-1;c>=0;c--) {
+
+              System.out.println(newArray[c]);
+          }
+          System.out.println(newArray.length);
+
+
+
+
+    }
+
+
+
+}
+
