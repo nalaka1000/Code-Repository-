@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+public class AllProcessesTest {
+
+    private static final String TASKLIST = "tasklist";
+
+
+
+    public static void main(String args[]) throws InterruptedException {
+
+        isProcessRunning();
+
+    }
+
+    public static void isProcessRunning( ) {
+
+        try {
+            Process pro = Runtime.getRuntime().exec(TASKLIST);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(pro.getInputStream()));
+            ArrayList<String> onlyChromeList = new ArrayList<String>();
+            ArrayList<String> fullListOfProcess = new ArrayList<String>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+
+                fullListOfProcess.add(line);
+
+            }
+            FileWriter onlyChrome = new FileWriter("list.txt");
+
+
+            for (int i=0; i< fullListOfProcess.size();i++){
+
+               String x = fullListOfProcess.get(i);
+
+               if (x.contains("chrome")){
+
+                   onlyChrome.write(x+"\n");
+
+               }
+            }
+            onlyChrome.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
